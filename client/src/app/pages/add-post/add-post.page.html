@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" routerLink="" class="homebutton">
+      <ion-icon name="images"></ion-icon>
+    </ion-button>
+    <ion-title>Add post</ion-title>
+    <ion-button slot="end" routerLink="" class="notification">
+      <ion-icon name="notifications"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-progress-bar type="indeterminate" *ngIf="inprogress"></ion-progress-bar>
+<ion-content>
+
+  <div class="profile-header">
+      <h2>Add Post</h2>
+  </div>
+
+  <div class="addpost-content">
+    <form #userlogin = "ngForm" (ngSubmit) = "onClickSubmit(userlogin)" >
+
+      <!-- <div *ngIf="noImagePost===false"> -->
+        <ion-input name="file" class="upload" *ngIf="isSelected===false" type="file" accept="video/*,image/*" name="myfile" (change)="onChange($event)"></ion-input>
+        <p class="upload-content" *ngIf="isSelected===false"> Upload  <ion-icon name="image-outline" class="img-icon"></ion-icon>   or   <ion-icon name="videocam-outline" class="video-icon"></ion-icon> from gallery</p>
+      <!-- </div> -->
+
+        <div class="selected-post" *ngIf="isSelected">
+        <ion-icon name="close-circle-outline" class="closeIcon" (click)="selectedStatus()" *ngIf="noImagePost===false"></ion-icon>
+          <ion-img  class="selecteimage"  [src]="url" *ngIf="format==='image' && url" ></ion-img>
+          <video class="selectedvideo" [src]="url" *ngIf="format==='video' && url" controls></video>
+        </div>
+
+        <ion-item>
+          <ion-textarea name="comments" [(ngModel)]="comments">What's in your mind?</ion-textarea>
+        </ion-item>
+
+        <ion-list>
+
+          <ion-item>
+            <ion-label>Accessbility</ion-label>
+              <ion-item>
+                <ion-label>Private</ion-label>
+                <ion-toggle (click)="changeAccessbility()" id="accessbility" ></ion-toggle>
+              </ion-item>
+          </ion-item>
+
+        </ion-list>
+
+        <button  type="submit">Share</button>
+  </form>
+  </div>
+
+
+</ion-content>

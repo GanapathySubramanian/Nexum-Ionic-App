@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" routerLink="" class="homebutton">
+      <ion-icon name="search"></ion-icon>
+    </ion-button>
+    <ion-title>Explore</ion-title>
+    <ion-button slot="end" routerLink="" class="notification">
+      <ion-icon name="notifications"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container" >
+    <div class="grid-container" >
+        <span *ngFor="let post of postDetails ; let i = index" [ngClass]="checkFormat(post.postUrl,i+1)" >
+            <div class="post-container"  *ngIf="post.postUrl && isImage(post.postUrl)" >
+              <ion-img src={{post.postUrl}} (click)="showPost(post)" expand="full" ></ion-img>
+              <div class="blur"></div>
+              <div class="info">
+                  <div class="like-section">
+                      <p>	<ion-icon name="heart"></ion-icon></p>
+                      <p id="likeCount">0</p>
+                  </div>
+                  <div class="comment-section">
+                      <p><ion-icon name="chatbubbles"></ion-icon></p>
+                      <p id="commentCount">0</p>
+                  </div>
+              </div>
+          </div>
+
+            <div class="post-container video-post"   *ngIf="post.postUrl && !isImage(post.postUrl)" >
+              <video  preload="metadata" width="100%" height="100%" (click)="showPost(post)" expand="full" alt="postImage">
+                  <source src={{loadThumbnail(post.postUrl)}}  alt="post video" autoplay muted  controls >
+              </video>
+              <div class="blur"></div>
+              <div class="info">
+                  <div class="like-section">
+                      <p>	<ion-icon name="heart"></ion-icon></p>
+                      <p id="likeCount">0</p>
+                  </div>
+                  <div class="comment-section">
+                      <p><ion-icon name="chatbubbles"></ion-icon></p>
+                      <p id="commentCount">0</p>
+                  </div>
+              </div>
+          </div>
+
+    </span>
+    </div>
+
+    </div>
+
+</ion-content>

@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" routerLink="" class="homebutton">
+      <ion-icon name="home"></ion-icon>
+    </ion-button>
+    <ion-title>Home</ion-title>
+    <ion-button slot="end" routerLink="" class="notification">
+      <ion-icon name="notifications"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <!--Story -->
+   <ion-row>
+    <ion-slides [options]="slideOpts">
+      <ion-col>
+      <ion-thumbnail  style="border-radius: 100%;border: 1px solid #cccccc;width:70px;height:70px"><!-- (click)="addStory()" -->
+        <ion-img  src="assets/imgs/addIcon.png" width="100" height="100" class="addImage" (click)="addStory()" class="addnewstory"></ion-img>
+      </ion-thumbnail>
+    </ion-col>
+      <ion-slide *ngFor="let item of storiesValue; let i = index">
+        <ion-col>
+          <!-- {{item.storyUrl}}-->
+          <!-- <ion-fab >
+            <ion-fab-button slot="fixed">
+              <ion-icon name="add"></ion-icon>
+            </ion-fab-button>
+          </ion-fab> -->
+          <ion-thumbnail>
+            <!--  <ion-icon *ngIf="i === 0" name="add" color="dark" style="border-color: black;border-radius: 50px;"></ion-icon> -->
+            <img [src]="item.storyUrl" (click)="viewStory(item.storyUrl)"/>
+          </ion-thumbnail>
+          <!-- <p>
+            <ion-text style="color:lightgrey;font-size: 12px;">{{item.user.name}}</ion-text>
+          </p> -->
+        </ion-col>
+      </ion-slide>
+    </ion-slides>
+   </ion-row>
+     <ion-card *ngFor="let post of postlist">
+      <ion-card-header>
+        <ion-card-content >
+          <ion-item lines="none">
+            <img src="{{post.user.profilepic}}" style="margin:0% 4% 0% 0%;width:14%;border-radius:50%;height:70%"/>
+            <ion-card-content>
+              <ion-label class="userId">{{post.user.name}}</ion-label>
+            </ion-card-content>
+            <svg slot="end" aria-label="More options" color="#262626" fill="#262626" height="28" role="img" viewBox="0 0 24 24" width="28"><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
+          </ion-item>
+        </ion-card-content>
+      </ion-card-header>
+      <ion-card-content>
+         <ion-card-content *ngIf="post.postUrl && !isImage(post.postUrl)">
+          <video  preload="metadata" width="100%" height="100%" controls>
+              <source src={{loadThumbnail(post.postUrl)}} type="video/mp4" (click)="showPost(post.postUrl)" expand="full" alt="post video" autoplay muted >
+          </video>
+          </ion-card-content>
+          <ion-card-content *ngIf="post.postUrl && isImage(post.postUrl)" style="height:170px">
+            <img src="{{post.postUrl}}" (click)="showPost(post.postUrl)" expand="full" alt="postImage"/><!--(click)="showPost(post.postUrl)"-->
+          </ion-card-content>
+        <ion-card-content *ngIf="post.postUrl===undefined || post.postUrl===null || post.postUrl===''">
+          <ion-item lines="none">
+            <ion-label (click)="showPost(post.postUrl)" expand="full">{{post.description}}</ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card-content>
+      <ion-card-content>
+        <ion-item lines="none"><p style="color:white">{{getLikesCount(post)}}</p>
+          <svg slot="start" aria-label="Share Post" color="grey" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><line fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2" x1="22" x2="9.218" y1="3" y2="10.083"></line><polygon fill="none" points="11.698 20.334 22 3.001 2 3.001 9.218 10.084 11.698 20.334" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></polygon></svg>
+          <!-- <ion-icon slot="start" name="send"></ion-icon> 92949c (click)="likeselect(post)"-->
+          <ion-icon slot="start" class="book" name="bookmark-outline"></ion-icon>
+          <ion-icon slot="end" class="like" id="like+{{post._id}}" (click)="iconChange(post)" [ngClass]="(select[id]!==undefined)?'clickable':''" [name]="(post.likes.includes(id))?'heart':'heart-outline'"></ion-icon>
+          <ion-label slot="end" class="likesCount" id="likecount+{{post._id}}">{{getLikesCount(post)}}</ion-label>
+          <ion-icon slot="end" (click)="showPost(post)" expand="full" class="comment" name="chatbubbles-outline"></ion-icon>
+          <ion-label slot="end" class="commentsCount">{{post.comments.length}}</ion-label>
+       </ion-item>
+      </ion-card-content>
+    </ion-card>
+</ion-content>
+<!-- <p>{{getLikesCount(post)}}</p> -->
+

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,GAAG,CAAA;EACC,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,gBAAgB,EAAE,SAAS;CAC9B;;AAED,AAAA,UAAU,CAAA;EACN,gBAAgB,EAAE,GAAG;CACxB;;AACD,AAAA,GAAG,CAAA;EACC,UAAU,EAAE,GAAG;CAClB;;AACD,AAAA,KAAK,CAAA;EACD,gBAAgB,EAAE,aAAa;CAClC;;AACD,AAAA,SAAS,CAAA;EACL,gBAAgB,EAAE,aAAa;CAClC",
+    "sources": [
+        "singlestory.page.scss"
+    ],
+    "names": [],
+    "file": "singlestory.page.css"
+}

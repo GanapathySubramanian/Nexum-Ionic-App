@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.presidio.demo",
+	"appName": "Presidio",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

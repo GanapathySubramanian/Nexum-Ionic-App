@@ -1,0 +1,31 @@
+<ion-tabs ><!--#tabs (ionTabsDidChange)="setCurrentTab($event)"-->
+
+  <ion-fab vertical="bottom" horizontal="center" translucent="true">
+    <ion-fab-button routerLink="/tabs/add">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button (click)="routeUrl()">
+      <ion-icon name="home"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button class="search" routerLink="/tabs/explore"><!--routerLink="/tabs/search"-->
+      <ion-icon name="search"></ion-icon>
+    </ion-tab-button>
+
+    <svg height="50" viewBox="0 0 100 50" width="100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M100 0v50H0V0c.543 27.153 22.72 49 50 49S99.457 27.153 99.99 0h.01z"
+         fill-rule="evenodd">
+      </path>
+    </svg>
+
+    <ion-tab-button class="wishlist" routerLink="/tabs/suggestion">
+      <ion-icon name="heart"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button routerLink="/tabs/profile">
+      <ion-icon name="person"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>
