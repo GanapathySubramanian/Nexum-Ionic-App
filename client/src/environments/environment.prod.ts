@@ -6,14 +6,14 @@ export const azureWebConfig : IonicAuthOptions = {
   // The platform which we are running on
   platform: 'web',
   // client or application id for provider
-  clientID: '776eac00-e0de-4bad-b36c-91d110eff4ff',
+  clientID: Id,
   // the discovery url for the provider
   // OpenID configuration
-  discoveryUrl: 'https://presidiodemo.b2clogin.com/presidiodemo.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_new-signin-signup-userflow',
+  discoveryUrl: url
   // the URI to redirect to after log in
   redirectUri: 'http://localhost:8100/login',
   // requested scopes from provider
-  scope: 'openid offline_access email profile https://presidiodemo.onmicrosoft.com/presidiodemo/user_impersonation',
+  scope: scope,
   // the URL to redirect to after log out
   logoutUrl: 'http://localhost:8100/login',
   // Show provider login in either current window or new tab
@@ -28,14 +28,14 @@ export const azureNativeConfig : IonicAuthOptions = {
   // The platform which we are running on
   platform: 'capacitor',
   // client or application id for provider
-  clientID: '776eac00-e0de-4bad-b36c-91d110eff4ff',
+  clientID: id,
   // the discovery url for the provider
   // OpenID configuration
-  discoveryUrl: 'https://presidiodemo.b2clogin.com/presidiodemo.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_new-signin-signup-userflow',
+  discoveryUrl: url,
   // the URI to redirect to after log in
-  redirectUri: 'io.ionic.presidio.demo://login',
+  redirectUri: redirectUri,
   // requested scopes from provider
-  scope: 'openid offline_access email profile https://presidiodemo.onmicrosoft.com/presidiodemo/user_impersonation',
+  scope: scope,
   // the URL to redirect to after log out
   logoutUrl: 'io.ionic.presidio.demo://login',
   // The type of iOS webview to use. 'shared' will use a webview that can share session/cookies
